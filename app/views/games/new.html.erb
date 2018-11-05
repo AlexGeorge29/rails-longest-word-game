@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New-Grid</title>
+</head>
+<body>
+  <h1>New Game!</h1>
+  <div>
+  <h2>New Grid!</h2>
+
+  <% @grid.each do |letter|%>
+  <%= letter %>
+  <% end %>
+  </div>
+  <div>
+    <h3>What is the longest word you can find?</h3>
+  <form action="/score" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :grid, @grid %>
+    <input type="text" name="word" placeholder="Enter the longest word with the given letters!">
+    <input type="submit">
+  </form>
+  </div>
+</body>
+</html>
